@@ -60,7 +60,8 @@ function generateHTML(item){
 
 // When a card or any item in the card is clicked, modal appears
 
-// Generate the modal
+//Function to generate the modal on click
+
 // function generateModal(info){
 //     let card = document.querySelectorAll('.card')
 
