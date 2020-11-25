@@ -60,21 +60,21 @@ function generateHTML(item){
 
 // When a card or any item in the card is clicked, modal appears
 
-//Function to generate the modal on click
+// Function to generate the modal on click
 
-// function generateModal(info){
-//     let card = document.querySelectorAll('.card')
+function generateModal(info){
+    let card = document.querySelectorAll('.card')
 
-//     for(let i = 0; i < card.length; i++){
-//         card[i].addEventListener('click', (e)=>{
+    for(let i = 0; i < card.length; i++){
+        card[i].addEventListener('click', (e)=>{
              
-
+            console.log(e.target)
         
 
         
-//         })
-//     }
+        })
+    }
     
-// }
+}
 
 
