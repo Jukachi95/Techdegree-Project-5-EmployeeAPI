@@ -23,7 +23,7 @@ function generateHTML(item){
     // Create a loop for each item in the array
     // Append to the HTML card item
 
-    
+
     
     // Declare html variable
     let html = ''
@@ -61,21 +61,19 @@ function generateHTML(item){
 // When a card or any item in the card is clicked, modal appears
 
 // Generate the modal
-function generateModal(info){
-    let card = document.querySelectorAll('.card')
+// function generateModal(info){
+//     let card = document.querySelectorAll('.card')
 
-    for(let i = 0; i < card.length; i++){
-        card[i].addEventListener('click', (e)=>{
-            
-            
-            console.log(e.composedPath())
+//     for(let i = 0; i < card.length; i++){
+//         card[i].addEventListener('click', (e)=>{
+             
 
         
 
         
-        })
-    }
+//         })
+//     }
     
-}
+// }
 
 
