@@ -11,17 +11,18 @@ let body = document.querySelector('body')
 
 fetch(url)
 .then(res =>  res.json())
-.then(data => generateHTML(data.results))
-.then(() => generateModal())
+.then(
+    data =>{
+        generateHTML(data.results)
+        generateModal(data.results)        
+    } 
+)
 
 
 //  ** Helper functions ** //
 
 // Generate HTML
 function generateHTML(item){
-
-    // Create a loop for each item in the array
-    // Append to the HTML card item
 
 
     
@@ -60,7 +61,6 @@ function generateHTML(item){
 
 // When a card or any item in the card is clicked, modal appears
 
-// Function to generate the modal on click
 
 function generateModal(info){
     let card = document.querySelectorAll('.card')
@@ -68,7 +68,44 @@ function generateModal(info){
     for(let i = 0; i < card.length; i++){
         card[i].addEventListener('click', (e)=>{
              
-            console.log(e.target)
+        
+                    for(let i = 0; i < info.length; i++){
+                        if(e.target.innerHTML.includes(info[i].name.first) || e.target.innerHTML.includes(info[i].location.city || e.target.innerHTML.includes(info[i].email))){
+                                console.log(info[i])
+                                // console.log(e.target) or the info[i]name??
+
+                                    // Create a modal on click
+                                    let modal = `
+                                    <div class="modal-container">
+                                    <div class="modal">
+                                        <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+                                        <div class="modal-info-container">
+                                            <img class="modal-img" src="${info[i].picture.large}" alt="profile picture">
+                                            <h3 id="name" class="modal-name cap">${info[i].name.first}${info[i].name.last}</h3>
+                                            <p class="modal-text">${info[i].email}</p>
+                                            <p class="modal-text cap">${info[i].location.city}</p>
+                                            <hr>
+                                            <p class="modal-text">(555) 555-5555</p>
+                                            <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
+                                            <p class="modal-text">Birthday: ${info[i].dob.date}</p>
+                                        </div>
+                                    </div>  
+                                    `
+
+                                    body.innerHTML += modal
+
+                                    // Clear html code
+
+                                    document.getElementById('modal-close-btn').addEventListener('click', (e)=>{
+                                        let mainModal = document.querySelector('.modal-container');
+                                        mainModal.style.display = "none";
+                                        
+                                    })
+
+                         }
+                   
+
+                    }
         
 
         
@@ -76,5 +113,18 @@ function generateModal(info){
     }
     
 }
+
+
+
+
+
+
+
+// ** Function to close modal ** //
+// function closeModal(){
+
+// }
+
+// if the name is equal to the name in .results, then display OR || INCLUDES()
 
 
