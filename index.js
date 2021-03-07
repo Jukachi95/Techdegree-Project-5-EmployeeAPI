@@ -1,6 +1,6 @@
 // Declare variables
 
-let url = 'https://randomuser.me/api/?results=12';
+let url = 'https://randomuser.me/api/?results=12&nat=us';
 let gallery = document.getElementById('gallery');
 let modalContainer = document.querySelector('modal-container')
 let body = document.querySelector('body')
@@ -74,6 +74,21 @@ function generateModal(info){
                                 console.log(info[i])
                                 // console.log(e.target) or the info[i]name??
 
+
+                                let infoPhone = info[i].phone
+
+                                    // Regex for US phone numbers
+                                    let infoNumber = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+                                    
+                                    // let numberNew = infoNumber.replace(info[i].phone)
+
+                                    // if(infoResult){ if true??
+                                    //    let newPhoneNum = infoResult.replace;
+                                       
+                                    // //    use replace method
+                                    // }
+
+
                                     // Create a modal on click
                                     let modal = `
                                     <div class="modal-container">
@@ -81,18 +96,21 @@ function generateModal(info){
                                         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                                         <div class="modal-info-container">
                                             <img class="modal-img" src="${info[i].picture.large}" alt="profile picture">
-                                            <h3 id="name" class="modal-name cap">${info[i].name.first}${info[i].name.last}</h3>
+                                            <h3 id="name" class="modal-name cap">${info[i].name.first} ${info[i].name.last}</h3>
                                             <p class="modal-text">${info[i].email}</p>
                                             <p class="modal-text cap">${info[i].location.city}</p>
                                             <hr>
-                                            <p class="modal-text">(555) 555-5555</p>
-                                            <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
+                                            <p class="modal-text"> ${info[i].phone}</p>
+                                            <p class="modal-text">${info[i].location.state}</p>
                                             <p class="modal-text">Birthday: ${info[i].dob.date}</p>
                                         </div>
                                     </div>  
                                     `
+                                    
 
-                                    body.innerHTML += modal
+                                    // Insert the 'modal' variable into the body
+                                    // Use the insertAdjacentHTML so that the HTML does not conflict with what is already there
+                                    body.insertAdjacentHTML("afterbegin", modal)
 
                                     // Clear html code
 
