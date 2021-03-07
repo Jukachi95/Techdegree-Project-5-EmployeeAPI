@@ -59,73 +59,59 @@ function generateHTML(item){
 
 }
 
-// When a card or any item in the card is clicked, modal appears
-
-
+// Function that creates a modal when a card or any item in the card is clicked
 function generateModal(info){
     let card = document.querySelectorAll('.card')
 
+    // Loop through the 'card' items
     for(let i = 0; i < card.length; i++){
+
+        // Once a card has 'card' item has been clicked....
         card[i].addEventListener('click', (e)=>{
              
         
                     for(let i = 0; i < info.length; i++){
+                        // If the 'card' has a first name, last name, email or city property then...
                         if(e.target.innerHTML.includes(info[i].name.first) || e.target.innerHTML.includes(info[i].location.city || e.target.innerHTML.includes(info[i].email))){
                                 console.log(info[i])
-                                // console.log(e.target) or the info[i]name??
-
-
-                                let infoPhone = info[i].phone
-
-                                    // Regex for US phone numbers
-                                    let infoNumber = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-                                    
-                                    // let numberNew = infoNumber.replace(info[i].phone)
-
-                                    // if(infoResult){ if true??
-                                    //    let newPhoneNum = infoResult.replace;
-                                       
-                                    // //    use replace method
-                                    // }
-
-
-                                    // Create a modal on click
-                                    let modal = `
-                                    <div class="modal-container">
-                                    <div class="modal">
-                                        <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-                                        <div class="modal-info-container">
-                                            <img class="modal-img" src="${info[i].picture.large}" alt="profile picture">
-                                            <h3 id="name" class="modal-name cap">${info[i].name.first} ${info[i].name.last}</h3>
-                                            <p class="modal-text">${info[i].email}</p>
-                                            <p class="modal-text cap">${info[i].location.city}</p>
-                                            <hr>
-                                            <p class="modal-text"> ${info[i].phone}</p>
-                                            <p class="modal-text">${info[i].location.state}</p>
-                                            <p class="modal-text">Birthday: ${info[i].dob.date}</p>
-                                        </div>
-                                    </div>  
-                                    `
+                                
                                     
 
-                                    // Insert the 'modal' variable into the body
-                                    // Use the insertAdjacentHTML so that the HTML does not conflict with what is already there
-                                    body.insertAdjacentHTML("afterbegin", modal)
+                                            // Create a modal on click
+                                            let modal = `
+                                            <div class="modal-container">
+                                            <div class="modal">
+                                                <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+                                                <div class="modal-info-container">
+                                                    <img class="modal-img" src="${info[i].picture.large}" alt="profile picture">
+                                                    <h3 id="name" class="modal-name cap">${info[i].name.first} ${info[i].name.last}</h3>
+                                                    <p class="modal-text">${info[i].email}</p>
+                                                    <p class="modal-text cap">${info[i].location.city}</p>
+                                                    <hr>
+                                                    <p class="modal-text"> ${info[i].phone}</p>
+                                                    <p class="modal-text">${info[i].location.state}</p>
+                                                    <p class="modal-text">Birthday: ${info[i].dob.date.slice(8,10)}/${info[i].dob.date.slice(5,7)}/${info[i].dob.date.slice(0,4)}</p>
+                                                </div>
+                                            </div>  
+                                            `
+                                                   // Birthday: Using the birthday string from API call, use slice to select different parts of the info[i].dob string to create a template string formatted as the appropriate dob
 
-                                    // Clear html code
 
-                                    document.getElementById('modal-close-btn').addEventListener('click', (e)=>{
-                                        let mainModal = document.querySelector('.modal-container');
-                                        mainModal.style.display = "none";
-                                        
-                                    })
+                                                            // Insert the 'modal' variable into the body
+                                                            // Use the insertAdjacentHTML so that the HTML does not conflict with content already there
+                                                            // Use "afterbegin" to place "modal" inside body, but before the first element
+                                                            body.insertAdjacentHTML("afterbegin", modal)
+
+                                                        
+                                                                // Select the main modal using event listener and close when 'x' button is clicked
+                                                                document.getElementById('modal-close-btn').addEventListener('click', (e)=>{
+                                                                    let mainModal = document.querySelector('.modal-container');
+                                                                    mainModal.style.display = "none";
+                                                                    
+                                                        })
 
                          }
-                   
-
                     }
-        
-
         
         })
     }
@@ -138,11 +124,22 @@ function generateModal(info){
 
 
 
-// ** Function to close modal ** //
-// function closeModal(){
-
-// }
-
-// if the name is equal to the name in .results, then display OR || INCLUDES()
 
 
+
+                                    // Format the date by removing last digits that are not needed
+                                    // Select date and store in variable from loop
+                                    // let newDate = info[i].dob.date
+                                    // Slice the string and store in new variable
+                                //     let dateSplit = newDate.split("")
+                                //     let dateReverse = dateSplit.reverse()
+                                //     let dateJoin = dateReverse.join("")
+                                //     let dateSlice = dateJoin.slice(14, 24)
+                                //     let newDateSplit = dateSlice.split("");
+                                //     let newDateReverse = newDateSplit.reverse()
+                                //     let newDateJoin = newDateReverse.join("")
+
+                                //     let regex = /^(d{2})\/(d{2})\/(d{4})$/
+                                //    let finalDate = newDateJoin.replace(newDateJoin, regex)
+                                //     console.log(finalDate)
+                                    
