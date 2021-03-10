@@ -70,10 +70,8 @@ function generateModal(info){
         card[i].addEventListener('click', (e)=>{
              
         
-                    for(let i = 0; i < info.length; i++){
-                        // If the 'card' has a first name, last name, email or city property then...
-                        if(e.target.innerHTML.includes(info[i].name.first) || e.target.innerHTML.includes(info[i].location.city || e.target.innerHTML.includes(info[i].email))){
-                                console.log(info[i])
+
+                                console.log(e.target)
                                 
                                     
 
@@ -110,8 +108,7 @@ function generateModal(info){
                                                                     
                                                         })
 
-                         }
-                    }
+                    
         
         })
     }
@@ -143,3 +140,8 @@ function generateModal(info){
                                 //    let finalDate = newDateJoin.replace(newDateJoin, regex)
                                 //     console.log(finalDate)
                                     
+                    // for(let i = 0; i < info.length; i++){
+                    //     // If the 'card' has a first name, last name, email or city property then...
+                    //     if(e.target.innerHTML.includes(info[i].name.first) || e.target.innerHTML.includes(info[i].location.city || e.target.innerHTML.includes(info[i].email))){
+
+                    // Lines 111 & 112 are the closing comments
